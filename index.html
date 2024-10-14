@@ -3,55 +3,27 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>3d-bike</title>
+    <script src="https://cdn.babylonjs.com/viewer/babylon.viewer.js"></script>
+    <link rel="stylesheet" href="./static/index.css" />
   </head>
-  <script src="https://cdn.babylonjs.com/babylon.js"></script>
   <body>
-    <canvas id="renderCanvas"></canvas>
-    <script>
-      const canvas = document.getElementById("renderCanvas");
-      const engine = new BABYLON.Engine(canvas, true);
-      const scene = new BABYLON.Scene(engine);
-
-      // 创建相机
-      const camera = new BABYLON.ArcRotateCamera(
-        "camera",
-        -Math.PI / 2,
-        Math.PI / 2.5,
-        10,
-        new BABYLON.Vector3(0, 0, 0),
-        scene
-      );
-      camera.attachControl(canvas, true);
-
-      // 创建灯光
-      const light = new BABYLON.HemisphericLight(
-        "light",
-        new BABYLON.Vector3(0, 1, 0),
-        scene
-      );
-
-      // 加载 STL 文件
-      BABYLON.SceneLoader.LoadAssetContainer(
-        "./static/bike.stl",
-        "",
-        scene,
-        function (container) {
-          if (!container) {
-            console.error("Failed to load STL file.");
-            return;
-          }
-          container.addAllToScene();
-        }
-      );
-
-      engine.runRenderLoop(function () {
-        scene.render();
-      });
-
-      window.addEventListener("resize", function () {
-        engine.resize();
-      });
-    </script>
+    <aside class="loadingContainer">
+      <!-- 加载动画 -->
+      <div class="loading">
+        <!-- <img width="200px" src="./static/GD.jpg" alt="" /> -->
+        <p>加载中～～～</p>
+      </div>
+    </aside>
+    <div class="contentContainer">
+      <!-- 3d模型容器 -->
+      <div class="babylonContainer">
+        <babylon style="height: auto" model="./static/bike.stl"></babylon>
+      </div>
+      <!-- 背景 -->
+      <canvas id="bgCanvas"></canvas>
+    </div>
   </body>
+  <script src="./static/bg.js"></script>
+  <script src="./static/index.js"></script>
 </html>
