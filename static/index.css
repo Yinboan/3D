@@ -40,7 +40,7 @@ body {
 
 /*  加载动画 */
 .loadingContainer {
-  background-color: gray;
+  background-color: #000;
   width: 100vw;
   height: 100vh;
   position: absolute;

@@ -1,5 +1,5 @@
 // 加载动画
-const loadingTime = 5000;
+const loadingTime = 500;
 const showContent = () => {
   // 去掉loading
   document.querySelector(".loadingContainer").style.display = "none";
